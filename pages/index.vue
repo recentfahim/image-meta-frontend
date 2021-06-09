@@ -1,34 +1,18 @@
 <template>
-  <div class="container">
     <div>
-      <Logo />
-      <h1 class="title">
-        image-meta-frontend
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <nav-bar />
     </div>
-  </div>
 </template>
 
 <script>
-export default {}
+import NavBar from '../components/NavBar.vue'
+
+export default {
+  name: 'Home',
+  components: {
+    NavBar
+  }
+}
 </script>
 
 <style>
