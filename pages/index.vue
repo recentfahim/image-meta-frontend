@@ -2,17 +2,27 @@
     <div>
       <nav-bar />
       <image-upload />
+      <camera-info :camera_info="'test'"/>
+      <author-copyright-info />
+      <exif-info />
     </div>
 </template>
 
 <script>
 import NavBar from '../components/NavBar.vue'
 import ImageUpload from '../components/ImageUpload.vue'
+import CameraInfo from '../components/CameraInfo.vue'
+import AuthorCopyrightInfo from '../components/AuthorCopyrightInfo.vue'
+import ExifInfo from '../components/ExifInfo.vue'
 
 export default {
   name: 'Home',
   components: {
-    NavBar, ImageUpload
+    NavBar,
+    ImageUpload,
+    CameraInfo,
+    AuthorCopyrightInfo,
+    ExifInfo
   }
 }
 </script>
