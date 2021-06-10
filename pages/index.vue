@@ -1,16 +1,18 @@
 <template>
     <div>
       <nav-bar />
+      <image-upload />
     </div>
 </template>
 
 <script>
 import NavBar from '../components/NavBar.vue'
+import ImageUpload from '../components/ImageUpload.vue'
 
 export default {
   name: 'Home',
   components: {
-    NavBar
+    NavBar, ImageUpload
   }
 }
 </script>
