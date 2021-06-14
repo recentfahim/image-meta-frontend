@@ -18,12 +18,14 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
 
 export default {
   name: 'ImageUpload',
   data() {
     return{
-      image: null
+      image: null,
+      exif_info: null
     }
   },
   methods: {
@@ -55,6 +57,12 @@ export default {
         this.image = e.target.result;
       }
       reader.readAsDataURL(file);
+
+      let formData = new FormData();
+      formData.append('image', file);
+      axios.post('http://127.0.0.1:8000/api/image-meta/', formData).then((res) => {
+          this.$emit("handleUpload", res.data.result);
+        })
     },
 
     removeFile() {

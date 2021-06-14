@@ -1,10 +1,10 @@
 <template>
     <div>
       <nav-bar />
-      <image-upload />
+      <image-upload v-on:handleUpload="handleUpload"/>
       <camera-info :camera_info="'test'"/>
-      <author-copyright-info />
-      <exif-info />
+      <author-copyright-info :author_info="'author info'"/>
+      <exif-info :exif_info="exif_data"/>
     </div>
 </template>
 
@@ -17,12 +17,23 @@ import ExifInfo from '../components/ExifInfo.vue'
 
 export default {
   name: 'Home',
+  data () {
+    return {
+      exif_data: ''
+    }
+  },
   components: {
     NavBar,
     ImageUpload,
     CameraInfo,
     AuthorCopyrightInfo,
     ExifInfo
+  },
+  methods:
+  {
+    handleUpload(value){
+      this.exif_data = value.exif_data
+    }
   }
 }
 </script>

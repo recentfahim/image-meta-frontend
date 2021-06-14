@@ -2,7 +2,12 @@
   <div class="exif-container">
     <h3>EXIF</h3>
     <div v-if="exif_info">
-      <h4>Have Exif info - {{exif_info}}</h4>
+      <table style="width:100%">
+        <tr v-for="(value, name) in exif_info" v-bind:key="name">
+          <td>{{name}}</td>
+          <td>{{value}}</td>
+        </tr>
+      </table>
     </div>
     <div v-else>
       <p class="no-info">Exif info not found.</p>
