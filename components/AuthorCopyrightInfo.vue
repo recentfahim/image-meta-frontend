@@ -2,7 +2,12 @@
   <div class="author-copyright-container">
     <h3>Author and Copyright</h3>
     <div v-if="author_info">
-      <h4>Have author and copyright info - {{author_info}}</h4>
+      <table style="width:100%">
+        <tr v-for="(value, name) in author_info" v-bind:key="name">
+          <td>{{name}}</td>
+          <td>{{value}}</td>
+        </tr>
+      </table>
     </div>
     <div v-else>
       <p class="no-info">Copyright not found.</p>

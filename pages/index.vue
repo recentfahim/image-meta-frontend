@@ -3,7 +3,7 @@
       <nav-bar />
       <image-upload v-on:handleUpload="handleUpload"/>
       <camera-info :camera_info="'test'"/>
-      <author-copyright-info :author_info="'author info'"/>
+      <author-copyright-info :author_info="iptc_data"/>
       <exif-info :exif_info="exif_data"/>
     </div>
 </template>
@@ -19,7 +19,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      exif_data: ''
+      exif_data: '',
+      iptc_data: ''
     }
   },
   components: {
@@ -33,6 +34,7 @@ export default {
   {
     handleUpload(value){
       this.exif_data = value.exif_data
+      this.iptc_data = value.iptc_data
     }
   }
 }
