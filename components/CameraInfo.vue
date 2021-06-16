@@ -2,7 +2,12 @@
   <div class="camera-container">
     <h3>Camera</h3>
     <div v-if="camera_info">
-      <h4>Have camera info - {{camera_info}}</h4>
+      <table style="width:100%">
+        <tr v-for="(value, name) in camera_info" v-bind:key="name">
+          <td>{{name}}</td>
+          <td>{{value}}</td>
+        </tr>
+      </table>
     </div>
     <div v-else>
       <p class="no-info">Camera info not found.</p>

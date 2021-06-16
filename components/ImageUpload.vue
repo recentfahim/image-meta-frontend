@@ -60,13 +60,14 @@ export default {
 
       let formData = new FormData();
       formData.append('image', file);
-      axios.post('http://127.0.0.1:8000/api/image-meta/', formData).then((res) => {
+      axios.post(process.env.baseUrl + '/api/image-meta/', formData).then((res) => {
           this.$emit("handleUpload", res.data.result);
         })
     },
 
     removeFile() {
       this.image = null;
+      this.$emit("handleUpload", null);
     }
   }
 }
@@ -145,7 +146,7 @@ input[type="file"] {
   border: 1px solid #f6f6f6;
   display: inline-block;
   height: auto;
-  max-height: 80%;
+  max-height: 365px;
   max-width: 80%;
   width: auto;
   margin-top: 20px;
