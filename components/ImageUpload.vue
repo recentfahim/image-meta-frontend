@@ -1,20 +1,28 @@
 <template>
-<div class="image-container">
-  <div class="helper"></div>
-  <div class="drop display-inline align-center" @dragover.prevent @drop="onDrop" v-bind:class="{height: !image}">
-    <div class="helper"></div>
-	  <label v-if="!image" class="btn display-inline">
-	    SELECT OR DROP AN IMAGE
-	    <input type="file" name="image" @change="onChange">
-    </label>
-    <div class="hidden display-inline align-center" v-else v-bind:class="{ 'image': true }">
-        <img :src="image" alt="" class="img" />
-        <br>
-        <br>
-        <button class="btn remove-btn" @click="removeFile">REMOVE</button>
+  <div>
+    <div class="image-container">
+      <div class="helper"></div>
+      <div class="drop display-inline align-center" @dragover.prevent @drop="onDrop" v-bind:class="{height: !image}">
+        <div class="helper"></div>
+        <label v-if="!image" class="btn display-inline">
+          SELECT OR DROP AN IMAGE
+          <input type="file" name="image" @change="onChange">
+        </label>
+        <div class="hidden display-inline align-center" v-else v-bind:class="{ 'image': true }">
+            <img :src="image" alt="" class="img" />
+            <br>
+            <br>
+            <button class="btn remove-btn" @click="removeFile">REMOVE</button>
+          </div>
+        </label>
       </div>
-    </label>
-  </div>
+    </div>
+    <div class="picture-url-container">
+      <h3>or enter the picture URL</h3>
+      <div>
+        <input type="text" v-model="photo_url" placeholder="Insert Photo URL"><button type="button" @click="onPictureURLClick" class="ml-2">Click Me!</button>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -25,7 +33,8 @@ export default {
   data() {
     return{
       image: null,
-      exif_info: null
+      exif_info: null,
+      photo_url: null
     }
   },
   methods: {
@@ -41,6 +50,19 @@ export default {
       var files = e.target.files;
       console.log(files[0]);
       this.createFile(files[0]);
+    },
+
+    onPictureURLClick(){
+      this.image = this.photo_url
+
+      let formData = new FormData();
+
+      if (this.photo_url){
+        formData.append('image_url', this.photo_url);
+        axios.post(process.env.baseUrl + '/api/image-meta/', formData).then((res) => {
+          //this.$emit("handleUpload", res.data.result);
+        })
+      }
     },
 
     createFile(file) {
@@ -63,6 +85,7 @@ export default {
       axios.post(process.env.baseUrl + '/api/image-meta/', formData).then((res) => {
           this.$emit("handleUpload", res.data.result);
         })
+
     },
 
     removeFile() {
@@ -168,5 +191,10 @@ input[type="file"] {
 }
 .height{
   height: 400px;
+}
+
+.picture-url-container{
+  margin-top: 20px;
+  text-align: center;
 }
 </style>

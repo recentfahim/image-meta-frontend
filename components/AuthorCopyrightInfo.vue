@@ -4,8 +4,8 @@
     <div v-if="author_info">
       <table style="width:100%">
         <tr v-for="(value, name) in author_info" v-bind:key="name">
-          <td>{{name}}</td>
-          <td>{{value}}</td>
+          <td v-if="value">{{name}}</td>
+          <td v-if="value">{{value}}</td>
         </tr>
       </table>
     </div>
