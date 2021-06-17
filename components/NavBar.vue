@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="text-center">
   <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand href="/">Image Meta</b-navbar-brand>
+    <b-navbar-brand href="/">Photo Meta</b-navbar-brand>
   </b-navbar>
 </div>
 </template>
