@@ -43,6 +43,6 @@ export default {
     host: '0'
   },
   env: {
-    baseUrl: 'http://localhost:8000'
+    baseUrl: 'https://powerful-basin-38227.herokuapp.com'
   }
 }
