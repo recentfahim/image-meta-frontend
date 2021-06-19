@@ -43,6 +43,6 @@ export default {
     host: '0'
   },
   env: {
-    baseUrl: 'https://powerful-basin-38227.herokuapp.com'
+    baseUrl: 'https://pacific-plains-05397.herokuapp.com'
   }
 }
