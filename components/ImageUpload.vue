@@ -59,7 +59,7 @@ export default {
 
       if (this.photo_url){
         formData.append('image_url', this.photo_url);
-        axios.post(process.env.baseUrl + '/api/image-meta/', formData).then((res) => {
+        axios.post(process.env.baseUrl + '/api/image-meta', formData).then((res) => {
           //this.$emit("handleUpload", res.data.result);
         })
       }
@@ -82,7 +82,7 @@ export default {
 
       let formData = new FormData();
       formData.append('image', file);
-      axios.post(process.env.baseUrl + '/api/image-meta/', formData).then((res) => {
+      axios.post(process.env.baseUrl + '/api/image-meta', formData).then((res) => {
           this.$emit("handleUpload", res.data.result);
         })
 
