@@ -20,7 +20,7 @@
     <div class="picture-url-container">
       <h3>or enter the picture URL</h3>
       <div>
-        <input type="text" v-model="photo_url" placeholder="Insert Photo URL"><button type="button" @click="onPictureURLClick" class="ml-2">Click Me!</button>
+        <input type="text" v-model="photo_url" placeholder="Insert Photo URL"><button type="button" @click="onPictureURLClick" class="ml-2">GO!</button>
       </div>
     </div>
   </div>
