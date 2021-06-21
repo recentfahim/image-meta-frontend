@@ -2,9 +2,12 @@
     <div>
       <nav-bar />
       <image-upload v-on:handleUpload="handleUpload"/>
-      <camera-info :camera_info="camera_info"/>
-      <author-copyright-info :author_info="iptc_data"/>
-      <exif-info :exif_info="exif_data"/>
+      <div class="text-center mt-4" v-if="this.$store.state.loading">
+         <b-spinner variant="success" type="grow" label="Spinning"></b-spinner>
+      </div>
+      <camera-info v-if="this.$store.state.info_flag" :camera_info="camera_info"/>
+      <author-copyright-info v-if="this.$store.state.info_flag" :author_info="iptc_data"/>
+      <exif-info v-if="this.$store.state.info_flag" :exif_info="exif_data"/>
     </div>
 </template>
 
@@ -19,9 +22,9 @@ export default {
   name: 'Home',
   data () {
     return {
-      exif_data: '',
-      iptc_data: '',
-      camera_info: ''
+      exif_data: null,
+      iptc_data: null,
+      camera_info: null
     }
   },
   components: {

@@ -53,6 +53,7 @@ export default {
     },
 
     onPictureURLClick(){
+      this.$store.commit('changeInfoFlag', true);
       this.image = this.photo_url
 
       let formData = new FormData();
@@ -60,12 +61,15 @@ export default {
       if (this.photo_url){
         formData.append('image_url', this.photo_url);
         axios.post(process.env.baseUrl + '/api/image-meta', formData, { headers: { 'Content-Type': 'multipart/form-data' }}).then((res) => {
-          //this.$emit("handleUpload", res.data.result);
+          this.$emit("handleUpload", res.data.result);
+          this.$store.commit('changeInfoFlag', true);
+          this.$store.commit('changeLoadingState', false);
         })
       }
     },
 
     createFile(file) {
+      this.$store.commit('changeLoadingState', true);
       if (!file.type.match('image.*')) {
         alert('Select an image');
         return;
@@ -83,6 +87,8 @@ export default {
       let formData = new FormData();
       formData.append('image', file);
       axios.post(process.env.baseUrl + '/api/image-meta', formData, { headers: { 'Content-Type': 'multipart/form-data' }}).then((res) => {
+          this.$store.commit('changeInfoFlag', true);
+          this.$store.commit('changeLoadingState', false);
           this.$emit("handleUpload", res.data.result);
         })
 
@@ -91,6 +97,7 @@ export default {
     removeFile() {
       this.image = null;
       this.$emit("handleUpload", null);
+      this.$store.commit('changeInfoFlag', false);
     }
   }
 }
