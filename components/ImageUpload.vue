@@ -96,6 +96,7 @@ export default {
 
     removeFile() {
       this.image = null;
+      this.photo_url = null
       this.$emit("handleUpload", null);
       this.$store.commit('changeInfoFlag', false);
     }
